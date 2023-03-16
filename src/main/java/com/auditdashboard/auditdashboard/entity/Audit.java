@@ -12,6 +12,7 @@ public class Audit {
     }
 
     @Id
+    @Column(name = "id", columnDefinition = "bigint")
     @GeneratedValue
     private Integer id;
 
@@ -27,7 +28,7 @@ public class Audit {
     @Column(name = "auditable_type")
     private String auditableType;
 
-    @Column(name = "auditable_id")
+    @Column(name = "auditable_id", columnDefinition = "char")
     private String auditableId;
 
     @Column(name = "old_values")
