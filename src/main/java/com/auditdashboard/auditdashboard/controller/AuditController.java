@@ -25,9 +25,10 @@ public class AuditController {
                                        @RequestParam(value = "ipAddress", defaultValue = "") String ipAddress,
                                        @RequestParam(value = "url", defaultValue = "") String url,
                                        @RequestParam(value = "old_values", defaultValue = "") String oldValues,
-                                       @RequestParam(value = "new_values", defaultValue = "") String newValues
+                                       @RequestParam(value = "new_values", defaultValue = "") String newValues,
+                                       @RequestParam(value = "created_at", defaultValue = "") String createdAt
                                ) {
-        return auditService.list(page, event, auditId, auditType, ipAddress, url, oldValues, newValues);
+        return auditService.list(page, event, auditId, auditType, ipAddress, url, oldValues, newValues, createdAt);
     }
 
     @GetMapping("event-types")
