@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface AuditRepository extends JpaRepository<Audit, Long> {
 
-    Page<Audit> findAllByEventContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(String event, String auditableType, String ipAddress, String url, String oldValues, String newValues, Pageable pageable);
+    Page<Audit> findAllByEventContainsIgnoreCaseAndAuditableIdContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(String event, String auditableId, String auditableType, String ipAddress, String url, String oldValues, String newValues, Pageable pageable);
 
-    long countByEventContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(String event, String auditableType, String ipAddress, String url, String oldValues, String newValues);
+    long countByEventContainsIgnoreCaseAndAuditableIdContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(String event, String auditableId, String auditableType, String ipAddress, String url, String oldValues, String newValues);
 
     @Query(value =
             "SELECT "+

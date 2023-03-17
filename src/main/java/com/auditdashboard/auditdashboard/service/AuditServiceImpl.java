@@ -5,6 +5,7 @@ import com.auditdashboard.auditdashboard.entity.Audit;
 import com.auditdashboard.auditdashboard.repository.AuditRepository;
 import com.auditdashboard.auditdashboard.resource.PaginatedAuditResource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,18 +19,21 @@ public class AuditServiceImpl implements AuditService{
     @Autowired
     AuditRepository auditRepository;
 
+    @Value("${results-per-page}")
+    private Integer resultsPerPage;
 
     @Override
-    public PaginatedAuditResource list(Integer page, String event, String type, String ipAddress, String url, String oldValues, String newValues) {
-        System.out.println("Page: "+page);
-        Pageable pageable = PageRequest.of(page, 25);
-        Page<Audit> audits = auditRepository.findAllByEventContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(event, type, ipAddress, url, oldValues, newValues, pageable);
-        long total = auditRepository.countByEventContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(event, type, ipAddress, url, oldValues, newValues);
+    public PaginatedAuditResource list(Integer page, String event, String id, String type, String ipAddress, String url, String oldValues, String newValues) {
+        Pageable pageable = PageRequest.of(page, resultsPerPage);
+        Page<Audit> audits = auditRepository.findAllByEventContainsIgnoreCaseAndAuditableIdContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(event, id, type, ipAddress, url, oldValues, newValues, pageable);
+        long total = auditRepository.countByEventContainsIgnoreCaseAndAuditableIdContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseOrderByCreatedAtDesc(event, id, type, ipAddress, url, oldValues, newValues);
+        long lastPage = (total / resultsPerPage)-1;
 
         return new PaginatedAuditResource(
                 audits.stream().map(AuditDAO::new).toList(),
                 total,
-                page
+                page,
+                lastPage > 0 ? lastPage : 0
         );
     }
 

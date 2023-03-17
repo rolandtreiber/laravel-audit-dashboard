@@ -20,13 +20,14 @@ public class AuditController {
     @GetMapping("")
     public PaginatedAuditResource list(@Valid @RequestParam(value = "page", defaultValue = "0") Integer page,
                                        @RequestParam(value = "event", defaultValue = "") String event,
-                                       @RequestParam(value = "auditType", defaultValue = "") String auditType,
+                                       @RequestParam(value = "auditable_id", defaultValue = "") String auditId,
+                                       @RequestParam(value = "auditable_type", defaultValue = "") String auditType,
                                        @RequestParam(value = "ipAddress", defaultValue = "") String ipAddress,
                                        @RequestParam(value = "url", defaultValue = "") String url,
                                        @RequestParam(value = "old_values", defaultValue = "") String oldValues,
                                        @RequestParam(value = "new_values", defaultValue = "") String newValues
                                ) {
-        return auditService.list(page, event, auditType, ipAddress, url, oldValues, newValues);
+        return auditService.list(page, event, auditId, auditType, ipAddress, url, oldValues, newValues);
     }
 
     @GetMapping("event-types")

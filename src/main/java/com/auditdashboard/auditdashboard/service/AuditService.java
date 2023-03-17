@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AuditService {
 
-    PaginatedAuditResource list(Integer page, String event, String type, String ipAddress, String url, String oldValues, String newValues);
+    PaginatedAuditResource list(Integer page, String event, String id, String type, String ipAddress, String url, String oldValues, String newValues);
 
     List<String> eventNames();
 

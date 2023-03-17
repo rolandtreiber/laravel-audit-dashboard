@@ -10,10 +10,13 @@ public class PaginatedAuditResource {
     long total;
     long page;
 
-    public PaginatedAuditResource(List<AuditDAO> data, long total, long page) {
+    long lastPage;
+
+    public PaginatedAuditResource(List<AuditDAO> data, long total, long page, long lastPage) {
         this.data = data;
         this.total = total;
         this.page = page;
+        this.lastPage = lastPage;
     }
 
     public List<AuditDAO> getData() {
@@ -26,5 +29,9 @@ public class PaginatedAuditResource {
 
     public long getPage() {
         return page;
+    }
+
+    public long getLastPage() {
+        return lastPage;
     }
 }
