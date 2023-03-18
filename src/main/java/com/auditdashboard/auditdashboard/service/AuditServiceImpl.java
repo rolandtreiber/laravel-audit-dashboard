@@ -35,10 +35,9 @@ public class AuditServiceImpl implements AuditService{
 
         Page<Audit> audits = auditRepository.findAllByEventContainsIgnoreCaseAndAuditableIdContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseAndCreatedAtLessThanEqualOrderByCreatedAtDesc(event, id, type, ipAddress, url, oldValues, newValues, createdAtParsed, pageable);
         long total = auditRepository.countByEventContainsIgnoreCaseAndAuditableIdContainsIgnoreCaseAndAuditableTypeContainsIgnoreCaseAndIpAddressContainsIgnoreCaseAndUrlContainsIgnoreCaseAndOldValuesContainsIgnoreCaseAndNewValuesContainsIgnoreCaseAndCreatedAtLessThanEqualOrderByCreatedAtDesc(event, id, type, ipAddress, url, oldValues, newValues, createdAtParsed);
-        long lastPage = (total / resultsPerPage)-1;
+        long lastPage = (total / resultsPerPage);
 
         List<Audit> a = auditRepository.findAllByCreatedAtGreaterThanEqual(Date.from(LocalDate.now().minusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        System.out.println(a);
         return new PaginatedAuditResource(
                 audits.stream().map(AuditDAO::new).toList(),
                 total,
