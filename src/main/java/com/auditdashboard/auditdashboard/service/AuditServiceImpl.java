@@ -50,7 +50,6 @@ public class AuditServiceImpl implements AuditService{
     public List<String> eventNames() {
         List<String> result = auditRepository.findGroupByEventWithJPQL();
 
-        System.out.println(result);
         return result.stream().toList();
     }
 
@@ -58,7 +57,6 @@ public class AuditServiceImpl implements AuditService{
     public List<String> auditableTypes() {
         List<String> result = auditRepository.findGroupByAuditableTypeWithJPQL();
 
-        System.out.println(result);
         return result.stream().toList();
     }
 
