@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "22e9c35d-cffe-4640-95af-e1fd06e2731e",
+		"name": "Audit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9064123"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}search",
+					"host": [
+						"{{base_url}}search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "event",
+							"value": "updated",
+							"disabled": true
+						},
+						{
+							"key": "old_values",
+							"value": "6",
+							"disabled": true
+						},
+						{
+							"key": "auditable_type",
+							"value": "YOU_MODEL",
+							"disabled": true
+						},
+						{
+							"key": "auditable_id",
+							"value": "AUDITABLE_ID",
+							"disabled": true
+						},
+						{
+							"key": "created_at",
+							"value": "2023-03-17",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event types",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}search/event-types",
+					"host": [
+						"{{base_url}}search"
+					],
+					"path": [
+						"event-types"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "event",
+							"value": "up",
+							"disabled": true
+						},
+						{
+							"key": "old_values",
+							"value": "6",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auditable types",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}search/auditable-types",
+					"host": [
+						"{{base_url}}search"
+					],
+					"path": [
+						"auditable-types"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "event",
+							"value": "up",
+							"disabled": true
+						},
+						{
+							"key": "old_values",
+							"value": "6",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
